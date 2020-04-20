@@ -10,4 +10,10 @@ import java.util.List;
  */
 public interface UserService {
     List<SubUser> queryUserList();
+
+    SubUser getUser(int id);
+
+    int edit(SubUser user);
+
+    int delete(int id);
 }

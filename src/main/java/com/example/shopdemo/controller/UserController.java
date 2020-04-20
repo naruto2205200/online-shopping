@@ -5,9 +5,7 @@ import com.example.shopdemo.service.UserService;
 import com.example.shopdemo.utils.ResponseResult;
 import com.example.shopdemo.model.SubUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -28,9 +26,27 @@ public class UserController {
         return ResponseResult.success(subUsers);
     }
 
-    @RequestMapping("/{id}/state/{mgState}")
-    public Result editUser(@PathVariable("id") int id, @PathVariable("mgState") boolean mgState) {
-        System.out.println(id+":"+mgState);
-        return ResponseResult.success();
+    @RequestMapping("/edit")
+    public Result editUser(@RequestBody SubUser user) {
+        System.out.println(user);
+        int edit = userService.edit(user);
+        if(edit>0){
+            return ResponseResult.success();
+        }
+        return ResponseResult.error(-1, "保存失败");
     }
+
+    @RequestMapping("/getUser/{id}")
+    public Result getUser(@PathVariable("id") int id) {
+        SubUser user = userService.getUser(id);
+        return ResponseResult.success(user);
+    }
+
+    @RequestMapping("/deleteUser/{id}")
+    public Result deleteUser(@PathVariable("id") int id) {
+        SubUser user = userService.getUser(id);
+        return ResponseResult.success(user);
+    }
+
+
 }

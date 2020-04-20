@@ -20,4 +20,21 @@ public class UserServiceImpl implements UserService {
     public List<SubUser> queryUserList() {
         return userMapper.queryUserList();
     }
+
+    @Override
+    public SubUser getUser(int id){
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int edit(SubUser user){
+
+        return 1;
+    }
+
+    @Override
+    public int delete(int id){
+
+        return 1;
+    }
 }

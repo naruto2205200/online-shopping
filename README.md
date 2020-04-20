@@ -1,3 +1,7 @@
+
+
+
+
 #数据库
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
@@ -42,3 +46,25 @@ INSERT INTO `sub_user` VALUES ('1', 'zhangsan', '11', '15025456845', '2020-04-19
 INSERT INTO `sub_user` VALUES ('2', 'lisi', '12', '16520253654', '2020-04-19 13:42:09', '2020-04-19 13:42:14', '', '12313435@qq.com');
 INSERT INTO `sub_user` VALUES ('3', 'wangwu', '15', '18258468545', '2020-04-19 13:42:32', '2020-04-19 13:42:36', '', '12313435@qq.com');
 INSERT INTO `sub_user` VALUES ('4', 'tianqi', '25', '12356895635', '2020-04-19 13:42:48', '2020-04-19 13:42:53', '', '12313435@qq.com');
+
+DROP TABLE IF EXISTS `sub_rights`;
+CREATE TABLE `sub_rights` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(24) DEFAULT NULL,
+  `path` varchar(30) DEFAULT NULL,
+  `level` smallint(2) DEFAULT NULL,
+  `parent_level` smallint(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sub_rights
+-- ----------------------------
+INSERT INTO `sub_rights` VALUES ('1', '商品管理', 'goods', '1', null);
+INSERT INTO `sub_rights` VALUES ('2', '订单管理', 'orders', '1', null);
+INSERT INTO `sub_rights` VALUES ('3', '权限管理', 'rights', '1', null);
+INSERT INTO `sub_rights` VALUES ('4', '商品列表', 'goods', '2', '1');
+INSERT INTO `sub_rights` VALUES ('5', '添加商品', 'goods', '3', '2');
+INSERT INTO `sub_rights` VALUES ('6', '订单列表', 'orders', '2', '1');
+INSERT INTO `sub_rights` VALUES ('7', '添加订单', 'orders', '3', '2');
+INSERT INTO `sub_rights` VALUES ('8', '用户列表', 'users', '2', '1');

@@ -8,4 +8,5 @@ public interface SubUserMapper {
     SubUser selectByPrimaryKey(Integer id);
 
     List<SubUser> queryUserList();
+
 }
